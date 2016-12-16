@@ -1,3 +1,4 @@
+var todos;
 var main = function () {
     "use strict";
     
