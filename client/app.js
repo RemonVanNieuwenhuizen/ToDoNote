@@ -77,7 +77,7 @@ var tasks = function () {
     $(".done ul").on("click", "button", function (event) {
         event.stopPropagation();
         console.log("remove button pressed");
-        $(this).parent().parent().remove();
+        $(this).parent().remove();
     });
     
     //moving item from tasks to done
