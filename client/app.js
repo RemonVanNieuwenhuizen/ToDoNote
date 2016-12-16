@@ -4,7 +4,7 @@ var main = function () {
     
     
     $.getJSON("json/todos.json", function (json) {
-        var todos = json.todos;
+    todos = json.todos;
         console.log(todos);
         todos.forEach(function (todo) {
             if ($(".container .lists .ul:contains(" + todo.listTitle + ")").length !== 0) {
@@ -25,10 +25,17 @@ var lists = function () {
         var $new_list;
         
         if ($(".list-input input").val() !== "") {
-            $new_list = $("<li>").text($(".list-input input").val());
+            var description = $(".list-input input").val();
+            $new_list = $("<li>").text(description);
             $new_list.hide();
             $(".lists ul").append($new_list);
             $new_list.fadeIn();
+            $(".list-input input").val("");
+            todos.push({"listTitle" : "Movies to watch", "todoTitle" : description});
+            $.post("todos", {}, function (response) {
+                console.log("We posted and the server responded!");
+                console.log(response);
+            });
             $(".list-input input").val("");
         }
     };
