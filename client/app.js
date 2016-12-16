@@ -74,16 +74,16 @@ var tasks = function () {
     });
     
     //remove item from done
-    $(".done button").on("click", function (event) {
-        console.log("remove button pressed");
-        $(this).parent().remove();
+    $(".done ul").on("click", "button", function (event) {
         event.stopPropagation();
+        console.log("remove button pressed");
+        $(this).parent().parent().remove();
     });
     
     //moving item from tasks to done
     $(".tasks ul").on("click", "li", function () {
         $(this).fadeOut(function () {
-            $(this).append($('<button id= "removeItem" type="button">Remove</button>'));
+            $(this).append($('<button type="button">Remove</button>'));
             $(".done ul").prepend($(this));
             $(this).fadeIn();
         });
@@ -91,9 +91,10 @@ var tasks = function () {
     
     //moving item from done to tasks
     $(".done ul").on("click", "li", function () {
+        console.log("move item to tasks");
         $(this).fadeOut(function () {
             $(".tasks ul").append($(this));
-            $(this).find("#removeItem").remove();
+            $(this).find("button").remove();
             $(this).fadeIn();
         });
     });
