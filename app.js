@@ -63,6 +63,7 @@ var tasks = function () {
     };
         
     $(".task-input button").on("click", function (event) {
+        console.log("input button pressed");
         addTaskFromInputBox();
     });
     
@@ -73,12 +74,14 @@ var tasks = function () {
     });
     
     //remove item from done
-    $(".done .ul .li. button").click(function () {
+    $(".done .ul li").on("click", "button", function () {
+        console.log("remove button pressed");
         $(this).parent().remove();
+        event.stopPropagation();
     });
     
     //moving item from tasks to done
-    $(".tasks").on("click", "li", function () {
+    $(".tasks ul").on("click", "li", function () {
         $(this).fadeOut(function () {
             $(this).append($('<button id= "removeItem" type="button">Remove</button>'));
             $(".done ul").prepend($(this));
@@ -86,11 +89,11 @@ var tasks = function () {
         });
     });
     
-    //moving item from done to tasts
-    $(".done").on("click", "li", function () {
+    //moving item from done to tasks
+    $(".done ul").on("click", "li", function () {
         $(this).fadeOut(function () {
             $(".tasks ul").append($(this));
-            $(this).find(":button").remove();
+            $(this).find("#removeItem").remove();
             $(this).fadeIn();
         });
     });
