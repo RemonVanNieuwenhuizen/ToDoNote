@@ -1,6 +1,11 @@
 var express = require("express"),
 	http = require("http"),
 	app = express(),
+    lists = {"lists": [
+        {"listTitle" : "Movies to watch"},
+        {"listTitle" : "Homework"},
+        {"listTitle" : "Chores"}
+    ]};
 	toDos = {"todos":[
 			    {"listTitle" : "Movies to watch",	"todoTitle" : "The Hobbit 3",	        "date" : null, "important" : null, "done" : false},
 			    {"listTitle" : "Movies to watch",   "todoTitle" : "The Other Woman",        "date" : null, "important" : null, "done" : false},

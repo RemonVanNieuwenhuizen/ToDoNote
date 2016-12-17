@@ -32,7 +32,7 @@ var lists = function () {
             $(".lists ul").append($new_list);
             $new_list.fadeIn();
             $(".list-input input").val("");
-            todos.push({"listTitle" : "Movies to watch", "todoTitle" : description});
+            todos.push({"listTitle" : description});
             $.post("todos", {}, function (response) {
                 console.log("We posted and the server responded!");
                 console.log(response);
