@@ -35,11 +35,11 @@ app.get("/json/todos.json", function (req, res) {
 // JSON objects
 app.use(express.urlencoded());
 
-app.post("/todos", function (req, res) {
+app.post("/lists", function (req, res) {
 	// the object is now stored in req.body
-	var newToDo = req.body;
-	console.log(newToDo);
-	toDos.push(newToDo);
+	var newList = req.body;
+	console.log(newList);
+	lists.push(newList);
 	// send back a simple object
-	res.json({"message":"You posted to the server!"});
+	res.json({"message":"You posted your list to the server!"});
 });
