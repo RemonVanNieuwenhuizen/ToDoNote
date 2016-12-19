@@ -87,10 +87,34 @@ app.post("/lists", function (req, res) {
 
 	console.log(newList);
 
-	lists.push(newList);
+	console.log(lists.lists);
+
+	lists.lists.push(newList);
+
+	console.log(lists.lists);
 
 	// send back a simple object
 
 	res.json({"message":"You posted your list to the server!"});
+
+});
+
+app.post("/todos", function (req, res) {
+
+	// the object is now stored in req.body
+
+	var newTask = req.body;
+
+	console.log(newTask);
+
+	console.log(ToDos.ToDos);
+
+	ToDos.ToDos.push(newTask);
+
+	console.log(ToDos.ToDos);
+
+	// send back a simple object
+
+	res.json({"message":"You posted your todo to the server!"});
 
 });
