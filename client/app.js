@@ -62,6 +62,8 @@ var lists = function () {
         }
     });
     
+    //Change list
+    
     //Remove list
     $(".lists ul").on("click", "button", function (event) {
         console.log($(this).html());
@@ -70,7 +72,7 @@ var lists = function () {
             event.stopPropagation();
             $(this).parent().hide();
             $(this).parent().attr("id", "delete");
-            $(this).parent().parent().append($("<li>").text("Remove list?").append($('<button type="button">Yes</button>')).append($('<button type="button">No</button>')));
+            ($(this).parent()).after($("<li>").text("Remove list?").append($('<button type="button">Yes</button>')).append($('<button type="button">No</button>')));
         }
         //If yes is pressed remove list and conformation question
         if ($(this).html() === "Yes") {
@@ -97,12 +99,18 @@ var tasks = function () {
         var newTask;
         
         if ($(".todoList input").val() !== "") {
-            $new_task = $("<li>").text($(".task-input input").val());
+            
+            $new_task = $("<li>").text($(".task-input input[type=text]").val()+" ");
+            $new_task.append($("<input type=date>").val($(".task-input input[type=date]").val()));
+            $(".task-input input[type=checkbox]").clone().appendTo($new_task);
             $new_task.hide();
             $(".tasks ul").append($new_task);
             $new_task.fadeIn();
-            newTask = {listTitle : currentListTitle, todoTitle : $(".task-input input").val(), date : null, done : false};
-            $(".todoList input").val("");
+            newTask = {listTitle : currentListTitle, todoTitle : $(".task-input input").val(), date : $(".task-input input[type=date]").val(), important : $(".task-input input[type=checkbox]").val(), done : false};
+            console.log(newTask);
+            $(".todoList .task-input input[type=text]").val("");
+            $(".todoList .task-input input[type=date]").val("");
+            $(".todoList .task-input input[type=checkbox]").prop("checked", false);
             
             $.post("todos", newTask, function (result) {
                 console.log("We posted and the server responded!");
@@ -113,7 +121,7 @@ var tasks = function () {
     };
         
     //Add todo on button click
-    $(".task-input button").on("click", function (event) {
+    $(".task-input input[type=submit]").on("click", function (event) {
         console.log("input button pressed");
         addTaskFromInputBox();
     });
