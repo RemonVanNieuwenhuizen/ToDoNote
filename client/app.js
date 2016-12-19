@@ -99,12 +99,18 @@ var tasks = function () {
         var newTask;
         
         if ($(".todoList input").val() !== "") {
-            $new_task = $("<li>").text($(".task-input input[type=text]").val()).append($("<section class=information>"+$(".task-input input[type=date]").val()+"</section>"));
+            
+            $new_task = $("<li>").text($(".task-input input[type=text]").val()+" ");
+            $new_task.append($("<input type=date>").val($(".task-input input[type=date]").val()));
+            $(".task-input input[type=checkbox]").clone().appendTo($new_task);
             $new_task.hide();
             $(".tasks ul").append($new_task);
             $new_task.fadeIn();
-            newTask = {listTitle : currentListTitle, todoTitle : $(".task-input input").val(), date : null, done : false};
-            $(".todoList input").val("");
+            newTask = {listTitle : currentListTitle, todoTitle : $(".task-input input").val(), date : $(".task-input input[type=date]").val(), important : $(".task-input input[type=checkbox]").val(), done : false};
+            console.log(newTask);
+            $(".todoList .task-input input[type=text]").val("");
+            $(".todoList .task-input input[type=date]").val("");
+            $(".todoList .task-input input[type=checkbox]").prop("checked", false);
             
             $.post("todos", newTask, function (result) {
                 console.log("We posted and the server responded!");
