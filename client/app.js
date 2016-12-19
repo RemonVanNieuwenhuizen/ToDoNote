@@ -1,4 +1,5 @@
 var todos;
+var lists;
 var main = function () {
     "use strict";
     
@@ -6,11 +7,14 @@ var main = function () {
     
     $.getJSON("json/todos.json", function (json) {
         todos = json.todos;
+        lists = json.lists;
         console.log(todos);
+        console.log(lists);
+        lists.forEach(function (list) {
+                $(".container .lists ul").append($("<li>").text(list.listTitle).append($('<button type="button">X</button>')));
+            };
         todos.forEach(function (todo) {
-            if ($(".container .lists .ul:contains(" + todo.listTitle + ")").length !== 0) {
-                $(".container .lists ul").append($("<li>").text(todo.listTitle).append($('<button type="button">X</button>')));
-            } if (todo.done === false) {
+            if (todo.done === false) {
                 $(".container .todoList .tasks ul").prepend($("<li>").text(todo.todoTitle));
             } else {
                 $(".container .todoList .done  ul").prepend($("<li>").text(todo.todoTitle).append($('<button id= "removeItem" type="button">Remove</button>')));
