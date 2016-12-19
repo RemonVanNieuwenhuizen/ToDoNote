@@ -62,6 +62,8 @@ var lists = function () {
         }
     });
     
+    //Change list
+    
     //Remove list
     $(".lists ul").on("click", "button", function (event) {
         console.log($(this).html());
@@ -70,7 +72,7 @@ var lists = function () {
             event.stopPropagation();
             $(this).parent().hide();
             $(this).parent().attr("id", "delete");
-            $(this).parent().parent().append($("<li>").text("Remove list?").append($('<button type="button">Yes</button>')).append($('<button type="button">No</button>')));
+            ($(this).parent()).after($("<li>").text("Remove list?").append($('<button type="button">Yes</button>')).append($('<button type="button">No</button>')));
         }
         //If yes is pressed remove list and conformation question
         if ($(this).html() === "Yes") {
