@@ -12,7 +12,7 @@ var main = function () {
         console.log(lists);
         lists.forEach(function (list) {
                 $(".container .lists ul").append($("<li>").text(list.listTitle).append($('<button type="button">X</button>')));
-            };
+            });
         todos.forEach(function (todo) {
             if (todo.done === false) {
                 $(".container .todoList .tasks ul").prepend($("<li>").text(todo.todoTitle));
