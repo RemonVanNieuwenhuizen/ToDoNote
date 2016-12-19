@@ -85,13 +85,7 @@ app.post("/lists", function (req, res) {
 
 	var newList = req.body;
 
-	console.log(newList);
-
-	console.log(lists.lists);
-
 	lists.lists.push(newList);
-
-	console.log(lists.lists);
 
 	// send back a simple object
 
@@ -105,13 +99,7 @@ app.post("/todos", function (req, res) {
 
 	var newTask = req.body;
 
-	console.log(newTask);
-
-	console.log(ToDos.ToDos);
-
-	ToDos.ToDos.push(newTask);
-
-	console.log(ToDos.ToDos);
+	toDos.todos.push(newTask);
 
 	// send back a simple object
 
