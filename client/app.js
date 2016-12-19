@@ -46,10 +46,8 @@ var lists = function () {
             $.post("lists", newList, function (result) {
                 console.log("We posted and the server responded!");
                 console.log(result);
+                lists.push(newList);
             });
-            todos.push(newList);
-            
-        
         }
     };
         
