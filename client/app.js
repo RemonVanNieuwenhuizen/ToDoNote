@@ -99,7 +99,7 @@ var tasks = function () {
         var newTask;
         
         if ($(".todoList input").val() !== "") {
-            $new_task = $("<li>").text($(".task-input input").val());
+            $new_task = $("<li>").text($(".task-input input[type=text]").val()).append($("<section class=information>"+$(".task-input input[type=date]").val()+"</section>"));
             $new_task.hide();
             $(".tasks ul").append($new_task);
             $new_task.fadeIn();
@@ -115,7 +115,7 @@ var tasks = function () {
     };
         
     //Add todo on button click
-    $(".task-input button").on("click", function (event) {
+    $(".task-input input[type=submit]").on("click", function (event) {
         console.log("input button pressed");
         addTaskFromInputBox();
     });
