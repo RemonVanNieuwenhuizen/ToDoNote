@@ -11,9 +11,9 @@ var main = function () {
         console.log(todos);
         
         todos.forEach(function (todo) {
-            if (todo.done === false && todo.listTitle === currentListTitle) {
+            if (todo.done === "false" && todo.listTitle === currentListTitle) {
                 $(".container .todoList .tasks ul").prepend($("<li>").text(todo.todoTitle));
-            } else if (todo.done === true && todo.listTitle === currentListTitle) {
+            } else if (todo.done === "true" && todo.listTitle === currentListTitle) {
                 $(".container .todoList .done  ul").prepend($("<li>").text(todo.todoTitle).append($('<button id= "removeItem" type="button">Remove</button>')));
             }
         });
@@ -33,13 +33,13 @@ var lists = function () {
     "use strict";
     var addListFromInputBox = function () {
         var $new_list;
-        var newList
+        var newList;
         
         if ($(".list-input input").val() !== "") {
             var description = $(".list-input input").val();
             
             $new_list = $("<li>").text(description).append($('<button type="button">X</button>'));
-            newList = {listTitle : $(".list-input input").val()};
+            newList = {listTitle : description};
             $new_list.hide();
             $(".lists ul").append($new_list);
             $new_list.fadeIn();
@@ -101,7 +101,7 @@ var tasks = function () {
         
         if ($(".todoList input").val() !== "") {
             
-            $new_task = $("<li>").text($(".task-input input[type=text]").val()+" ");
+            $new_task = $("<li>").text($(".task-input input[type=text]").val() + " ");
             $new_task.append($("<input type=date>").val($(".task-input input[type=date]").val()));
             $(".task-input input[type=checkbox]").clone().appendTo($new_task);
             $new_task.hide();
@@ -144,7 +144,7 @@ var tasks = function () {
     $(".tasks ul").on("click", "li", function () {
         $(this).fadeOut(function () {
             $(this).append($('<button type="button">Remove</button>'));
-            $(this).
+            
             $(".done ul").prepend($(this));
             $(this).fadeIn();
         });
