@@ -7,18 +7,22 @@ var main = function () {
     
     $.getJSON("json/todos.json", function (json) {
         todos = json.todos;
-        lists = json.lists;
         console.log(todos);
-        console.log(lists);
-        lists.forEach(function (list) {
-                $(".container .lists ul").append($("<li>").text(list.listTitle).append($('<button type="button">X</button>')));
-            });
+        
         todos.forEach(function (todo) {
             if (todo.done === false) {
                 $(".container .todoList .tasks ul").prepend($("<li>").text(todo.todoTitle));
             } else {
                 $(".container .todoList .done  ul").prepend($("<li>").text(todo.todoTitle).append($('<button id= "removeItem" type="button">Remove</button>')));
             }
+        });
+    });
+    
+    $.getJSON("json/lists.json", function (json) {
+        lists = json.lists;
+        console.log(lists);
+        lists.forEach(function (list) {
+            $(".container .lists ul").append($("<li>").text(list.listTitle).append($('<button type="button">X</button>')));
         });
     });
 };
@@ -49,15 +53,15 @@ var lists = function () {
         }
     };
         
-        $(".list-input button").on("click", function (event) {
-            addListFromInputBox();
-        });
+    $(".list-input button").on("click", function (event) {
+        addListFromInputBox();
+    });
     
-        $(".list-input input").on("keypress", function (event) {
+    $(".list-input input").on("keypress", function (event) {
         if (event.keyCode === 13) {
             addListFromInputBox();
-            }
-        });
+        }
+    });
     
     //Remove list
     $(".lists ul").on("click", "button", function (event) {
@@ -68,14 +72,14 @@ var lists = function () {
             $(this).parent().hide();
             $(this).parent().attr("id", "delete");
             $(this).parent().parent().append($("<li>").text("Remove list?").append($('<button type="button">Yes</button>')).append($('<button type="button">No</button>')));
-        } 
+        }
         //If yes is pressed remove list and conformation question
         if ($(this).html() === "Yes") {
             event.stopPropagation();
             console.log("remove button pressed");
             $(this).parent().remove();
             $("#delete").remove();
-        } 
+        }
         //If no is pressed reload list title and remove conformation question
         else if ($(this).html() === "No") {
             $(this).parent().remove();
