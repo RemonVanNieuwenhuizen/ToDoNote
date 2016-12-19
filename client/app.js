@@ -28,15 +28,17 @@ var lists = function () {
         if ($(".list-input input").val() !== "") {
             var description = $(".list-input input").val();
             $new_list = $("<li>").text(description).append($('<button type="button">X</button>'));
+            newList = {listTitle : description}}
             $new_list.hide();
             $(".lists ul").append($new_list);
             $new_list.fadeIn();
             $(".list-input input").val("");
-            todos.push({"listTitle" : description});
-            $.post("todos", {}, function (response) {
+            $.post("lists", newList, function (result) {
                 console.log("We posted and the server responded!");
-                console.log(response);
+                console.log(result);
             });
+            todos.push(newList);
+            
             $(".list-input input").val("");
         }
     };
@@ -52,20 +54,21 @@ var lists = function () {
         }
     });
     
-    $(".lists ul").on("click", "button", function (event) {
-        console.log($(this).html());
-        if ($(this).html() === "X") {
-            event.stopPropagation();
-            $(this).parent().Text().hide()
-            $(this).parent().append($("<li>").text("Remove list?").append($('<button type="button">Yes</button>'))append($('<button type="button">No</button>')));
-        } if ($(this).html() === "Yes") {
-            event.stopPropagation();
-            console.log("remove button pressed");
-            $(this).parent().remove();
-        } else if ($(this).html() === "No"){
-            
-        }
-    });
+    //Remove list
+//    $(".lists ul").on("click", "button", function (event) {
+//        console.log($(this).html());
+//        if ($(this).html() === "X") {
+//            event.stopPropagation();
+//            $(this).parent().Text().hide();
+//            $(this).parent().append($("<li>").text("Remove list?").append($('<button type="button">Yes</button>'))append($('<button type="button">No</button>')));
+//        } if ($(this).html() === "Yes") {
+//            event.stopPropagation();
+//            console.log("remove button pressed");
+//            $(this).parent().remove();
+//        } else if ($(this).html() === "No"){
+//            
+//        }
+//    });
     
 };
 
@@ -74,6 +77,7 @@ $(document).ready(lists);
 
 var tasks = function () {
     "use strict";
+    //Add todo from input box
     var addTaskFromInputBox = function () {
         var $new_task;
         
@@ -86,11 +90,12 @@ var tasks = function () {
         }
     };
         
+    //Add todo on button click
     $(".task-input button").on("click", function (event) {
         console.log("input button pressed");
         addTaskFromInputBox();
     });
-    
+    //Add todo on spacebar
     $(".task-input input").on("keypress", function (event) {
         if (event.keyCode === 13) {
             addTaskFromInputBox();
