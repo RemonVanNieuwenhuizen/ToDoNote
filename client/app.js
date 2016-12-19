@@ -45,7 +45,6 @@ var lists = function () {
         }
     };
         
-    
         $(".list-input button").on("click", function (event) {
             addListFromInputBox();
         });
@@ -59,17 +58,22 @@ var lists = function () {
     //Remove list
     $(".lists ul").on("click", "button", function (event) {
         console.log($(this).html());
+        //If the cross is presse ask for conformation
         if ($(this).html() === "X") {
             event.stopPropagation();
             $(this).parent().hide();
             $(this).parent().attr("id", "delete");
             $(this).parent().parent().append($("<li>").text("Remove list?").append($('<button type="button">Yes</button>')).append($('<button type="button">No</button>')));
-        } if ($(this).html() === "Yes") {
+        } 
+        //If yes is pressed remove list and conformation question
+        if ($(this).html() === "Yes") {
             event.stopPropagation();
             console.log("remove button pressed");
             $(this).parent().remove();
             $("#delete").remove();
-        } else if ($(this).html() === "No") {
+        } 
+        //If no is pressed reload list title and remove conformation question
+        else if ($(this).html() === "No") {
             $(this).parent().remove();
             $("#delete").show();
             $("#delete").attr("id", "");
