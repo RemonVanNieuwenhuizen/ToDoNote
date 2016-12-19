@@ -18,27 +18,27 @@ var express = require("express"),
 
 	toDos = {"todos":[
 
-			    {"listTitle" : "Movies to watch",	"todoTitle" : "The Hobbit 3",	        "date" : null, "important" : null, "done" : false},
+			    {"listTitle" : "Movies to watch",	"todoTitle" : "The Hobbit 3",	        "date" : null, "important" : null, "done" : "false"},
 
-			    {"listTitle" : "Movies to watch",   "todoTitle" : "The Other Woman",        "date" : null, "important" : null, "done" : false},
+			    {"listTitle" : "Movies to watch",   "todoTitle" : "The Other Woman",        "date" : null, "important" : null, "done" : "false"}},
 
-			    {"listTitle" : "Movies to watch",   "todoTitle" : "Transcendence",          "date" : null, "important" : null, "done" : false},
+			    {"listTitle" : "Movies to watch",   "todoTitle" : "Transcendence",          "date" : null, "important" : null, "done" : "false"}},
 
-			    {"listTitle" : "Movies to watch",   "todoTitle" : "Noah",                   "date" : null, "important" : null, "done" : false},
+			    {"listTitle" : "Movies to watch",   "todoTitle" : "Noah",                   "date" : null, "important" : null, "done" : "false"}},
 
-			    {"listTitle" : "Movies to watch",   "todoTitle" : "12 Years a Slave",       "date" : null, "important" : null, "done" : false},
+			    {"listTitle" : "Movies to watch",   "todoTitle" : "12 Years a Slave",       "date" : null, "important" : null, "done" : "false"}},
 
-			    {"listTitle" : "Movies to watch",   "todoTitle" : "Harry potter",           "date" : null, "important" : null, "done" : true},
+			    {"listTitle" : "Movies to watch",   "todoTitle" : "Harry potter",           "date" : null, "important" : null, "done" : "true"},
 
-			    {"listTitle" : "Movies to watch",   "todoTitle" : "Star wars",              "date" : null, "important" : null, "done" : true},
+			    {"listTitle" : "Movies to watch",   "todoTitle" : "Star wars",              "date" : null, "important" : null, "done" : "true"},
 
-			    {"listTitle" : "Movies to watch",   "todoTitle" : "Ted",                    "date" : null, "important" : null, "done" : true},
+			    {"listTitle" : "Movies to watch",   "todoTitle" : "Ted",                    "date" : null, "important" : null, "done" : "true"},
 
-			    {"listTitle" : "Homework",          "todoTitle" : "Make Lab assignment 3",  "date" : null, "important" : null, "done" : true},
+			    {"listTitle" : "Homework",          "todoTitle" : "Make Lab assignment 3",  "date" : null, "important" : null, "done" : "true"},
 
-			    {"listTitle" : "Chores",            "todoTitle" : "Clean garden",           "date" : null, "important" : null, "done" : true},
+			    {"listTitle" : "Chores",            "todoTitle" : "Clean garden",           "date" : null, "important" : null, "done" : "true"},
 
-			    {"listTitle" : "Chores",            "todoTitle" : "Do dishes",              "date" : null, "important" : null, "done" : true}
+			    {"listTitle" : "Chores",            "todoTitle" : "Do dishes",              "date" : null, "important" : null, "done" : "true"}
 
 			]};
 
@@ -103,6 +103,6 @@ app.post("/todos", function (req, res) {
 
 	// send back a simple object
 
-	res.json({"message":"You posted your todo to the server!"});
+	res.json({"message":"Server: You posted your todo to the server!"});
 
 });
