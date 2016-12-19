@@ -1,5 +1,6 @@
 var todos;
 var lists;
+var currentListTitle = "Movies to watch";
 var main = function () {
     "use strict";
     
@@ -10,9 +11,9 @@ var main = function () {
         console.log(todos);
         
         todos.forEach(function (todo) {
-            if (todo.done === false) {
+            if (todo.done === false && todo.listTitle === currentListTitle) {
                 $(".container .todoList .tasks ul").prepend($("<li>").text(todo.todoTitle));
-            } else {
+            } else if (todo.done === true && todo.listTitle === currentListTitle) {
                 $(".container .todoList .done  ul").prepend($("<li>").text(todo.todoTitle).append($('<button id= "removeItem" type="button">Remove</button>')));
             }
         });
@@ -37,7 +38,7 @@ var lists = function () {
             var description = $(".list-input input").val();
             
             $new_list = $("<li>").text(description).append($('<button type="button">X</button>'));
-            var newList = {listTitle : description};
+            var newList = {listTitle : currentListTitle};
             $new_list.hide();
             $(".lists ul").append($new_list);
             $new_list.fadeIn();
@@ -93,6 +94,7 @@ var tasks = function () {
     //Add todo from input box
     var addTaskFromInputBox = function () {
         var $new_task;
+        var newTask;
         
         if ($(".todoList input").val() !== "") {
             $new_task = $("<li>").text($(".task-input input").val());
@@ -100,6 +102,13 @@ var tasks = function () {
             $(".tasks ul").append($new_task);
             $new_task.fadeIn();
             $(".todoList input").val("");
+            newTask = {listTitle : currentListTitle, todoTitle : $(".task-input input").val(), date : null; done : false};
+            
+            $.post("todos", newTask, function (result) {
+                console.log("We posted and the server responded!");
+                console.log(result);
+                lists.push(newTask);
+            });
         }
     };
         
