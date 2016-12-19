@@ -64,6 +64,11 @@ app.get("/json/todos.json", function (req, res) {
 
 });
 
+app.get("/json/lists.json", function (req, res) {
+
+	res.json(lists);
+
+});
 
 
 // tell Express to parse incoming
