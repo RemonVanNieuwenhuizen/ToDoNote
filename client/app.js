@@ -5,11 +5,11 @@ var main = function () {
     
     
     $.getJSON("json/todos.json", function (json) {
-    todos = json.todos;
+        todos = json.todos;
         console.log(todos);
         todos.forEach(function (todo) {
             if ($(".container .lists .ul:contains(" + todo.listTitle + ")").length !== 0) {
-                $(".container .lists ul").append($("<li>").text(todo.listTitle));
+                $(".container .lists ul").append($("<li>").text(todo.listTitle).append($('<button type="button">X</button>')));
             } if (todo.done === false) {
                 $(".container .todoList .tasks ul").prepend($("<li>").text(todo.todoTitle));
             } else {
@@ -27,7 +27,7 @@ var lists = function () {
         
         if ($(".list-input input").val() !== "") {
             var description = $(".list-input input").val();
-            $new_list = $("<li>").text(description);
+            $new_list = $("<li>").text(description).append($('<button type="button">X</button>'));
             $new_list.hide();
             $(".lists ul").append($new_list);
             $new_list.fadeIn();
@@ -51,6 +51,22 @@ var lists = function () {
             addListFromInputBox();
         }
     });
+    
+    $(".lists ul").on("click", "button", function (event) {
+        console.log($(this).html());
+        if ($(this).html() === "X") {
+            event.stopPropagation();
+            $(this).parent().Text().hide()
+            $(this).parent().append($("<li>").text("Remove list?").append($('<button type="button">Yes</button>'))append($('<button type="button">No</button>')));
+        } if ($(this).html() === "Yes") {
+            event.stopPropagation();
+            console.log("remove button pressed");
+            $(this).parent().remove();
+        } else if ($(this).html() === "No"){
+            
+        }
+    });
+    
 };
 
 
