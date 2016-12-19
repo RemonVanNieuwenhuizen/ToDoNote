@@ -27,52 +27,55 @@ var lists = function () {
         
         if ($(".list-input input").val() !== "") {
             var description = $(".list-input input").val();
+            
             $new_list = $("<li>").text(description).append($('<button type="button">X</button>'));
-            newList = {listTitle : description}}
+            var newList = {listTitle : description};
             $new_list.hide();
             $(".lists ul").append($new_list);
             $new_list.fadeIn();
             $(".list-input input").val("");
+            
             $.post("lists", newList, function (result) {
                 console.log("We posted and the server responded!");
                 console.log(result);
             });
             todos.push(newList);
             
-            $(".list-input input").val("");
+        
         }
     };
         
     
-    $(".list-input button").on("click", function (event) {
-        addListFromInputBox();
-    });
+        $(".list-input button").on("click", function (event) {
+            addListFromInputBox();
+        });
     
-    $(".list-input input").on("keypress", function (event) {
+        $(".list-input input").on("keypress", function (event) {
         if (event.keyCode === 13) {
             addListFromInputBox();
-        }
-    });
+            }
+        });
     
     //Remove list
-//    $(".lists ul").on("click", "button", function (event) {
-//        console.log($(this).html());
-//        if ($(this).html() === "X") {
-//            event.stopPropagation();
-//            $(this).parent().Text().hide();
-//            $(this).parent().append($("<li>").text("Remove list?").append($('<button type="button">Yes</button>'))append($('<button type="button">No</button>')));
-//        } if ($(this).html() === "Yes") {
-//            event.stopPropagation();
-//            console.log("remove button pressed");
-//            $(this).parent().remove();
-//        } else if ($(this).html() === "No"){
-//            
-//        }
-//    });
-    
+    $(".lists ul").on("click", "button", function (event) {
+        console.log($(this).html());
+        if ($(this).html() === "X") {
+            event.stopPropagation();
+            $(this).parent().hide();
+            $(this).parent().attr("id", "delete");
+            $(this).parent().parent().append($("<li>").text("Remove list?").append($('<button type="button">Yes</button>')).append($('<button type="button">No</button>')));
+        } if ($(this).html() === "Yes") {
+            event.stopPropagation();
+            console.log("remove button pressed");
+            $(this).parent().remove();
+            $("#delete").remove();
+        } else if ($(this).html() === "No") {
+            $(this).parent().remove();
+            $("#delete").show();
+            $("#delete").attr("id", "");
+        }
+    });
 };
-
-
 $(document).ready(lists);
 
 var tasks = function () {
