@@ -101,8 +101,8 @@ var tasks = function () {
             $new_task.hide();
             $(".tasks ul").append($new_task);
             $new_task.fadeIn();
-            $(".todoList input").val("");
             newTask = {listTitle : currentListTitle, todoTitle : $(".task-input input").val(), date : null, done : false};
+            $(".todoList input").val("");
             
             $.post("todos", newTask, function (result) {
                 console.log("We posted and the server responded!");
