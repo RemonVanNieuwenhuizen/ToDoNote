@@ -33,12 +33,13 @@ var lists = function () {
     "use strict";
     var addListFromInputBox = function () {
         var $new_list;
+        var newList
         
         if ($(".list-input input").val() !== "") {
             var description = $(".list-input input").val();
             
             $new_list = $("<li>").text(description).append($('<button type="button">X</button>'));
-            var newList = {listTitle : currentListTitle};
+            newList = {listTitle : $(".list-input input").val()};
             $new_list.hide();
             $(".lists ul").append($new_list);
             $new_list.fadeIn();
@@ -143,6 +144,7 @@ var tasks = function () {
     $(".tasks ul").on("click", "li", function () {
         $(this).fadeOut(function () {
             $(this).append($('<button type="button">Remove</button>'));
+            $(this).
             $(".done ul").prepend($(this));
             $(this).fadeIn();
         });
