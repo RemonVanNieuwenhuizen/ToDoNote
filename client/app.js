@@ -7,7 +7,7 @@ var main = function () {
     
     
     $.getJSON("json/todos.json", function (json) {
-        todos = json.todos;
+        this.todos = json.todos;
         console.log(todos);
         
         todos.keys(lists).forEach(function(list) {
