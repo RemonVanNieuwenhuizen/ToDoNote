@@ -11,6 +11,7 @@ var main = function () {
         console.log(todos);
         
         todos.forEach(function (todo) {
+            if(todo.listTitle)
             if (todo.done === "false" && todo.listTitle === currentListTitle) {
                 $(".container .todoList .tasks ul").prepend($("<li>").text(todo.todoTitle));
             } else if (todo.done === "true" && todo.listTitle === currentListTitle) {
