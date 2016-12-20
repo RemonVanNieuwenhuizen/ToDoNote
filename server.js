@@ -19,14 +19,14 @@ var express = require("express"),
             1: {
                 title: "Movies to watch",
                 items: {
-                    1: {"todoTitle" : "The Hobbit 3", "date" : null, "important" : null, "done" : "false"},
+                    1: {"todoTitle" : "The Hobbit 3",          "date" : null, "important" : null, "done" : "false"},
                     2: {"todoTitle" : "The Other Woman",       "date" : null, "important" : null, "done" : "false"},
-                    3: { "todoTitle" : "Transcendence",         "date" : null, "important" : null, "done" : "false"},
+                    3: {"todoTitle" : "Transcendence",         "date" : null, "important" : null, "done" : "false"},
                     4: {"todoTitle" : "Noah",                  "date" : null, "important" : null, "done" : "false"},
                     5: {"todoTitle" : "12 Years a Slave",      "date" : null, "important" : null, "done" : "false"},
                     6: {"todoTitle" : "Harry potter",          "date" : null, "important" : null, "done" : "true"},
                     7: {"todoTitle" : "Star wars",             "date" : null, "important" : null, "done" : "true"},
-                    8: {"todoTitle" : "Ted",                    "date" : null, "important" : null, "done" : "true"},
+                    8: {"todoTitle" : "Ted",                   "date" : null, "important" : null, "done" : "true"},
                 }
             },
             2: {
@@ -102,7 +102,7 @@ app.post("/todos", function (req, res) {
 
 	var newTask = req.body;
 
-	toDos.todos.push(newTask);
+	toDos.lists.push(newTask);
 
 	// send back a simple object
 

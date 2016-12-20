@@ -1,6 +1,6 @@
 var todos;
 var lists;
-var currentListTitle = "Movies to watch";
+var currentListIndex = 1;
 var main = function () {
     "use strict";
     
@@ -10,22 +10,15 @@ var main = function () {
         todos = json.todos;
         console.log(todos);
         
-        todos.forEach(function (todo) {
-            if(todo.listTitle)
-            if (todo.done === "false" && todo.listTitle === currentListTitle) {
+        todos.keys(lists).forEach(function(list) {
+            $(".container .lists ul").append($("<li>").text(list.title).append($('<button type="button">X</button>')));
+            list.keys(items).forEach(function(todo) {
+                if (todo.done === "false") {
                 $(".container .todoList .tasks ul").prepend($("<li>").text(todo.todoTitle));
-            } else if (todo.done === "true" && todo.listTitle === currentListTitle) {
+                } else if (todo.done === "true") {
                 $(".container .todoList .done  ul").prepend($("<li>").text(todo.todoTitle).append($('<button id= "removeItem" type="button">Remove</button>')));
-            }
-        });
-    });
-    
-    $.getJSON("json/lists.json", function (json) {
-        lists = json.lists;
-        console.log(lists);
-        lists.forEach(function (list) {
-            $(".container .lists ul").append($("<li>").text(list.listTitle).append($('<button type="button">X</button>')));
-        });
+            }});
+        });  
     });
 };
 $(document).ready(main);
