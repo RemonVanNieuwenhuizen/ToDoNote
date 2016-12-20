@@ -1,6 +1,6 @@
 var bodyParser = require('body-parser'),
-
-var express = require("express"),
+    
+    express = require("express"),
 
 	http = require("http"),
 
