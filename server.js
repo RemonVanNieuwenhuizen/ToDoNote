@@ -1,4 +1,4 @@
-var bodyParser = require('body-parser')
+var bodyParser = require('body-parser'),
 
 var express = require("express"),
 
@@ -63,13 +63,7 @@ http.createServer(app).listen(3000);
 
 app.get("/json/todos.json", function (req, res) {
 
-	res.json(toDos);
-
-});
-
-app.get("/json/lists.json", function (req, res) {
-
-	res.json(lists);
+	res.json(toDos.lists);
 
 });
 
