@@ -19,7 +19,7 @@ var main = function () {
             
             var currentTodo = json[currentListIndex]['items'][todo];
             if (currentTodo.done === "false") {
-            $(".container .todoList .tasks ul").prepend($("<li class=" + todo + ">").text(currentTodo.todoTitle + " ").append($("<input type=date>").val(currentTodo.date)).append($("input[type=checkbox]").prop('checked', currentTodo.important === "true"));
+            $(".container .todoList .tasks ul").prepend($("<li class=" + todo + ">").text(currentTodo.todoTitle + " ").append($("<input type=date>").val(currentTodo.date)).append($("input[type=checkbox]").prop('checked', currentTodo.important === "true")));
             } else if (currentTodo.done === "true") {
             $(".container .todoList .done  ul").prepend($("<li class=" + todo + ">").text(currentTodo.todoTitle).append($('<button id= "removeItem" type="button">Remove</button>')));
         }});
@@ -105,7 +105,7 @@ var tasks = function () {
             $new_task.hide();
             $(".tasks ul").append($new_task);
             $new_task.fadeIn();
-            newTask = {listTitle : currentListTitle, todoTitle : $(".task-input input").val(), date : $(".task-input input[type=date]").val(), important : $(".task-input input[type=checkbox]").val(), done : false};
+            newTask = str_random(10):{listTitle : currentListTitle, todoTitle : $(".task-input input").val(), date : $(".task-input input[type=date]").val(), important : $(".task-input input[type=checkbox]").val(), done : false};
             console.log(newTask);
             $(".todoList .task-input input[type=text]").val("");
             $(".todoList .task-input input[type=date]").val("");
