@@ -60,6 +60,14 @@ line-height: 58px;}
 	background-color: yellow;
 	border-style: solid;
 	list-style-type: none;}
+	
+.lists li:hover {
+    color: #FF00FF;
+}
+
+.todoList li:hover {
+    color: #FF00FF;
+}
 
 .fa{
 	float: right;
