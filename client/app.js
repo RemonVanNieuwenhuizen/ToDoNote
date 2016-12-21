@@ -18,7 +18,7 @@ var main = function () {
             var today = new Date();
             today = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
             console.log(today);
-            today = Date.pase(today);
+            today = Date.parse(today);
             var due = Date.parse(currentTodo.date);
             console.log(today);
             console.log(due);
