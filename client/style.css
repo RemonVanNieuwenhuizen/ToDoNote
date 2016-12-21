@@ -11,10 +11,18 @@ font-family: 'Roboto', sans-serif;}
 
 .login{
 width: 50%;
-float: left;}
+float: left;
+position: relative;
+text-align: center;
+font-size: 25px;
+padding-top:100px;}
 
 .description{
-width: 50%;}
+width: 50%;
+position: relative;
+text-align: center;
+font-size: 50px;
+padding-top:100px;}
 
 .logo{
 width: 50%;
@@ -80,6 +88,9 @@ line-height: 58px;}
 .todoList li::after {
     content: url(http://www.w3schools.com/css/smiley.gif);
 }
+
+.due {
+	color: RED;}
 
 .fa{
 	float: right;}
