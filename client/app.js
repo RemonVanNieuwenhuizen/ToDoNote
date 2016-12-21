@@ -138,7 +138,7 @@ var tasks = function () {
             $.post("todos", newTask, function (result) {
                 console.log("We posted and the server responded!");
                 console.log(result);
-                todos.push(newTask);
+                lists.push(newTask);
             });
         }
     };
@@ -166,7 +166,7 @@ var tasks = function () {
         $.post("removeTask", clickedTask , function (result) {
                 console.log("We removed the item from the list");
                 console.log(result);
-                removeTask.push(clickedTask);
+                lists.push(clickedList);
             });
     });
     
