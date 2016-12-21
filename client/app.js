@@ -17,18 +17,26 @@ var main = function () {
             var currentTodo = json[currentListIndex]['items'][todo];
             var today = new Date();
             today = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
-            console.log(today);
             today = Date.parse(today);
             var due = Date.parse(currentTodo.date);
             console.log(today);
             console.log(due);
-            var listItem = $("<li class=" + todo + ">").text(currentTodo.todoTitle + " ").append($("<input type=date>").val(currentTodo.date)).append($("<input type=checkbox>").prop('checked', currentTodo.important === "true"));
             
+            
+            if (today<due){
+                var listItem = $("<li class=" + todo + ">").text(currentTodo.todoTitle + " ").append($("<input type=date>").val(currentTodo.date)).append($("<input type=checkbox>").prop('checked', currentTodo.important === "true"));
+            }
+            else{
+                var listItem = $("<li class = " + todo + " class = due>").text(currentTodo.todoTitle + " ").append($("<input type=date>").val(currentTodo.date)).append($("<input type=checkbox>").prop('checked', currentTodo.important === "true"));
+            }
+                
+                
+                
             if (currentTodo.done === "false") {
             $(".container .todoList .tasks ul").prepend(listItem);
             } else if (currentTodo.done === "true") {
             $(".container .todoList .done  ul").prepend(listItem);
-        } } );
+        } }};
     });
 };
 $(document).ready(main);
