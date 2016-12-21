@@ -11,7 +11,10 @@ var main = function () {
         lists = json;
         
         Object.keys(lists).forEach(function (list) {
+            console.log(list);
+            console.log(list.title);
             $(".container .lists ul").append($("<li>").text(list.title).append($('<button type="button">X</button>')));
+            
             Object.keys(lists[currentListIndex]['items']).forEach(function(todo) {
                 if (todo.done === "false") {
                 $(".container .todoList .tasks ul").prepend($("<li>").text(todo.todoTitle));
