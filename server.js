@@ -101,6 +101,8 @@ app.post("/todos", function (req, res) {
     console.log(currentTodoIndex);
     
 	toDos['lists'][currentListIndex]['items'][currentTodoIndex] = newTask;
+    
+    console.log(toDos['lists'][currentListIndex]);
 
 	// send back a simple object
 
