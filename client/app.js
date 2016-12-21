@@ -36,7 +36,7 @@ var main = function () {
             if (currentTodo.done === "false") {
             $(".container .todoList .tasks ul").prepend(listItem.append($("<input type=submit value=update>")));
             } else if (currentTodo.done === "true") {
-            $(".container .todoList .done  ul").prepend(listItem);
+            $(".container .todoList .done  ul").prepend(listItem.append($('<button type="button">Remove</button>')));
             }
         });
     });
