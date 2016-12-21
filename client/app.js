@@ -94,7 +94,7 @@ var tasks = function () {
         var $new_task;
         var newTask;
         
-        if ($(".todoList input").val() !== "") {
+        if ($(".todoList input[type=text]").val() !== "") {
             
             var randomIndex = Math.random();
             $new_task = $("<li class ="+ randomIndex + ">").text($(".task-input input[type=text]").val() + " ");
