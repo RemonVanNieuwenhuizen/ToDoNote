@@ -11,7 +11,7 @@ var main = function () {
         lists = json;
         
         Object.keys(lists).forEach(function (list) {
-            console.log(list);
+            consol.log(json['list']);
             console.log(list.title);
             $(".container .lists ul").append($("<li>").text(list.title).append($('<button type="button">X</button>')));
             
