@@ -7,13 +7,9 @@ var main = function () {
     
     
     $.getJSON("/json/todos.json", function (json) {
-        console.log(json);
-        lists = json;
         
-        Object.keys(lists).forEach(function (list) {
-            console.log(json[list]);
-            console.log(json[list]['title']);
-            $(".container .lists ul").append($("<li>").text(json[list].title).append($('<button type="button">X</button>')));
+        Object.keys(json).forEach(function (list) {
+            $(".container .lists ul").append($("<li class =" + list + ">").text(json[list].title).append($('<button type="button">X</button>')));
             
             Object.keys(lists[currentListIndex]['items']).forEach(function(todo) {
                 if (todo.done === "false") {
