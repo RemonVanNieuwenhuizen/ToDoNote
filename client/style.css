@@ -19,7 +19,17 @@ width: 50%;}
 .logo{
 width: 50%;
 float: left;
-font-size: 75px;}
+font-size: 75px;
+animation-name: example;
+animation-duration: 4s;
+animation-iteration-count: infinite;}
+
+@keyframes example {
+    0%   {color: green;}
+    25%  {color: yellow;}
+    50%  {color: blue;}
+    100% {color: red;}
+}
 
 .avatar{
 width: 50%;
@@ -62,13 +72,14 @@ line-height: 58px;}
 	list-style-type: none;}
 	
 .lists li:hover {
-    color: #FF00FF;
-}
+    color: #FF00FF;}
 
 .todoList li:hover {
-    color: #FF00FF;
+    color: #FF00FF;}
+	
+.todoList li::after {
+    content: url(http://www.w3schools.com/css/smiley.gif);
 }
 
 .fa{
-	float: right;
-}
+	float: right;}
