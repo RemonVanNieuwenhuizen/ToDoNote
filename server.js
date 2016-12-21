@@ -99,7 +99,7 @@ app.post("/todos", function (req, res) {
     var currentTodoIndex = Object.keys(newTask[currentListIndex])[0];
     console.log(currentListIndex);
     console.log(currentTodoIndex);
-    
+    console.log(newTask[currentListIndex][currentTodoIndex]);
 	toDos['lists'][currentListIndex]['items'][currentTodoIndex] = newTask[currentListIndex][currentTodoIndex];
     
     console.log(toDos['lists'][currentListIndex]);
