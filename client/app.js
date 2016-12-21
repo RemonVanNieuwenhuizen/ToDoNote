@@ -11,11 +11,12 @@ var main = function () {
         Object.keys(json).forEach(function (list) {
             $(".container .lists ul").append($("<li class =" + list + ">").text(json[list].title).append($('<button type="button">X</button>')));
             
-            Object.keys(lists[currentListIndex]['items']).forEach(function(todo) {
-                if (todo.done === "false") {
-                $(".container .todoList .tasks ul").prepend($("<li>").text(todo.todoTitle));
-                } else if (todo.done === "true") {
-                $(".container .todoList .done  ul").prepend($("<li>").text(todo.todoTitle).append($('<button id= "removeItem" type="button">Remove</button>')));
+            Object.keys(json[currentListIndex]['items']).forEach(function(todo) {
+                var currentTodo = json[currentListIndex]['items'][todo];
+                if (currentTodo.done === "false") {
+                $(".container .todoList .tasks ul").prepend($("<li>").text(currentTodo.todoTitle));
+                } else if (currentTodo.done === "true") {
+                $(".container .todoList .done  ul").prepend($("<li>").text(currentTodo.todoTitle).append($('<button id= "removeItem" type="button">Remove</button>')));
             }});
         });  
     });
