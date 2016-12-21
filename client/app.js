@@ -105,6 +105,7 @@ var tasks = function () {
             $new_task.fadeIn();
             newTask = {[currentListIndex] : {[randomIndex] : {todoTitle : $(".task-input input").val(), date : $(".task-input input[type=date]").val(), important : $(".task-input input[type=checkbox]").val(), done : false}}};
             console.log(newTask);
+            console.log(Object.keys(newTask));
             $(".todoList .task-input input[type=text]").val("");
             $(".todoList .task-input input[type=date]").val("");
             $(".todoList .task-input input[type=checkbox]").prop("checked", false);
