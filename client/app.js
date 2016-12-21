@@ -34,7 +34,7 @@ var main = function () {
                 
                 
             if (currentTodo.done === "false") {
-            $(".container .todoList .tasks ul").prepend(listItem.);
+            $(".container .todoList .tasks ul").prepend(listItem);
             } else if (currentTodo.done === "true") {
             $(".container .todoList .done  ul").prepend(listItem);
             }
