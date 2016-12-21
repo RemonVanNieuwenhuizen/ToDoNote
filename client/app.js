@@ -10,15 +10,15 @@ var main = function () {
         
         Object.keys(json).forEach(function (list) {
             $(".container .lists ul").append($("<li class =" + list + ">").text(json[list].title).append($('<button type="button">X</button>')));
+            });
             
-            Object.keys(json[currentListIndex]['items']).forEach(function(todo) {
-                var currentTodo = json[currentListIndex]['items'][todo];
-                if (currentTodo.done === "false") {
-                $(".container .todoList .tasks ul").prepend($("<li class=" + todo + ">").text(currentTodo.todoTitle));
-                } else if (currentTodo.done === "true") {
-                $(".container .todoList .done  ul").prepend($("<li class=" + todo + ">").text(currentTodo.todoTitle).append($('<button id= "removeItem" type="button">Remove</button>')));
-            }});
-        });  
+        Object.keys(json[currentListIndex]['items']).forEach(function(todo) {
+            var currentTodo = json[currentListIndex]['items'][todo];
+            if (currentTodo.done === "false") {
+            $(".container .todoList .tasks ul").prepend($("<li class=" + todo + ">").text(currentTodo.todoTitle));
+            } else if (currentTodo.done === "true") {
+            $(".container .todoList .done  ul").prepend($("<li class=" + todo + ">").text(currentTodo.todoTitle).append($('<button id= "removeItem" type="button">Remove</button>')));
+        }});
     });
 };
 $(document).ready(main);
