@@ -19,16 +19,17 @@ var main = function () {
             today = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
             today = Date.parse(today);
             var due = Date.parse(currentTodo.date);
+            var listItem;
             console.log(today);
             console.log(due);
             
             
             if (today<due){
-                var listItem = $("<li class=" + todo + ">").text(currentTodo.todoTitle + " ").append($("<input type=date>").val(currentTodo.date)).append($("<input type=checkbox>").prop('checked', currentTodo.important === "true"));
+                listItem = $("<li class=" + todo + ">").text(currentTodo.todoTitle + " ").append($("<input type=date>").val(currentTodo.date)).append($("<input type=checkbox>").prop('checked', currentTodo.important === "true"));
             }
-            else{
-                var listItem = $("<li class = " + todo + " class = due>").text(currentTodo.todoTitle + " ").append($("<input type=date>").val(currentTodo.date)).append($("<input type=checkbox>").prop('checked', currentTodo.important === "true"));
-            }
+            else if(today>due) {
+                listItem = $("<li class = " + todo + " class = due>").text(currentTodo.todoTitle + " ").append($("<input type=date>").val(currentTodo.date)).append($("<input type=checkbox>").prop('checked', currentTodo.important === "true"));
+            };
                 
                 
                 
