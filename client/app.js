@@ -103,7 +103,7 @@ var tasks = function () {
             $new_task.hide();
             $(".tasks ul").append($new_task);
             $new_task.fadeIn();
-            newTask = {currentListIndex : {randomIndex : {listTitle : currentListTitle, todoTitle : $(".task-input input").val(), date : $(".task-input input[type=date]").val(), important : $(".task-input input[type=checkbox]").val(), done : false}}};
+            newTask = {currentListIndex : {randomIndex : {todoTitle : $(".task-input input").val(), date : $(".task-input input[type=date]").val(), important : $(".task-input input[type=checkbox]").val(), done : false}}};
             console.log(newTask);
             $(".todoList .task-input input[type=text]").val("");
             $(".todoList .task-input input[type=date]").val("");
