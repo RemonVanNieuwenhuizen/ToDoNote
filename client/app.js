@@ -26,7 +26,7 @@ var main = function () {
             $(".container .todoList .tasks ul").prepend(listItem);
             } else if (currentTodo.done === "true") {
             $(".container .todoList .done  ul").prepend(listItem);
-        } } } );
+        } } );
     });
 };
 $(document).ready(main);
