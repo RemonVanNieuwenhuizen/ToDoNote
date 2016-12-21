@@ -18,8 +18,10 @@ var main = function () {
             var today = new Date();
             today = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
             console.log(today);
+            today = Date.pase(today);
             var due = Date.parse(currentTodo.date);
-            console.log(currentTodo.date);
+            console.log(today);
+            console.log(due);
             var listItem = $("<li class=" + todo + ">").text(currentTodo.todoTitle + " ").append($("<input type=date>").val(currentTodo.date)).append($("<input type=checkbox>").prop('checked', currentTodo.important === "true"));
             
             if (currentTodo.done === "false") {
