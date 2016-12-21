@@ -8,10 +8,8 @@ var main = function () {
     
     $.getJSON("/json/todos.json", function (json) {
         console.log(json);
-        this.todos = json.todos;
-        console.log(todos);
         
-        todos.keys(lists).forEach(function(list) {
+        json.keys(lists).forEach(function(list) {
             $(".container .lists ul").append($("<li>").text(list.title).append($('<button type="button">X</button>')));
             list.keys(items).forEach(function(todo) {
                 if (todo.done === "false") {
