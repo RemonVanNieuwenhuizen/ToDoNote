@@ -13,10 +13,7 @@ var main = function () {
             });
             
         Object.keys(json[currentListIndex]['items']).forEach(function (todo) {
-            $new_task = $("<li>").text($(".task-input input[type=text]").val() + " ");
-            $new_task.append($("<input type=date>").val($(".task-input input[type=date]").val()));
-            $(".task-input input[type=checkbox]").clone().appendTo($new_task);
-            
+
             var currentTodo = json[currentListIndex]['items'][todo];
             if (currentTodo.done === "false") {
             $(".container .todoList .tasks ul").prepend($("<li class=" + todo + ">").text(currentTodo.todoTitle + " ").append($("<input type=date>").val(currentTodo.date)).append($("input[type=checkbox]").prop('checked', currentTodo.important === "true")));
