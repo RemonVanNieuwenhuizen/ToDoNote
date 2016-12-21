@@ -14,9 +14,9 @@ var main = function () {
             Object.keys(json[currentListIndex]['items']).forEach(function(todo) {
                 var currentTodo = json[currentListIndex]['items'][todo];
                 if (currentTodo.done === "false") {
-                $(".container .todoList .tasks ul").prepend($("<li>").text(currentTodo.todoTitle));
+                $(".container .todoList .tasks ul").prepend($("<li class=" + todo + ">").text(currentTodo.todoTitle));
                 } else if (currentTodo.done === "true") {
-                $(".container .todoList .done  ul").prepend($("<li>").text(currentTodo.todoTitle).append($('<button id= "removeItem" type="button">Remove</button>')));
+                $(".container .todoList .done  ul").prepend($("<li class=" + todo + ">").text(currentTodo.todoTitle).append($('<button id= "removeItem" type="button">Remove</button>')));
             }});
         });  
     });
