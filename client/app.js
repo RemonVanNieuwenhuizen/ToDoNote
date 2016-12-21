@@ -12,7 +12,7 @@ var main = function () {
             $(".container .lists ul").append($("<li class =" + list + ">").text(json[list].title).append($('<button type="button">X</button>')));
             });
             
-        Object.keys(json[currentListIndex]['items']).forEach(function(todo) {
+        Object.keys(json[currentListIndex]['items']).forEach(function (todo) {
             $new_task = $("<li>").text($(".task-input input[type=text]").val() + " ");
             $new_task.append($("<input type=date>").val($(".task-input input[type=date]").val()));
             $(".task-input input[type=checkbox]").clone().appendTo($new_task);
@@ -22,7 +22,7 @@ var main = function () {
             $(".container .todoList .tasks ul").prepend($("<li class=" + todo + ">").text(currentTodo.todoTitle + " ").append($("<input type=date>").val(currentTodo.date)).append($("input[type=checkbox]").prop('checked', currentTodo.important === "true")));
             } else if (currentTodo.done === "true") {
             $(".container .todoList .done  ul").prepend($("<li class=" + todo + ">").text(currentTodo.todoTitle).append($('<button id= "removeItem" type="button">Remove</button>')));
-        }});
+        } } );
     });
 };
 $(document).ready(main);
@@ -99,13 +99,14 @@ var tasks = function () {
         
         if ($(".todoList input").val() !== "") {
             
-            $new_task = $("<li>").text($(".task-input input[type=text]").val() + " ");
+            var randomIndex = Math.random();
+            $new_task = $("<li class ="+ randomIndex + ">").text($(".task-input input[type=text]").val() + " ");
             $new_task.append($("<input type=date>").val($(".task-input input[type=date]").val()));
             $(".task-input input[type=checkbox]").clone().appendTo($new_task);
             $new_task.hide();
             $(".tasks ul").append($new_task);
             $new_task.fadeIn();
-            newTask = str_random(10):{listTitle : currentListTitle, todoTitle : $(".task-input input").val(), date : $(".task-input input[type=date]").val(), important : $(".task-input input[type=checkbox]").val(), done : false};
+            newTask = {currentListIndex : {randomIndex : {listTitle : currentListTitle, todoTitle : $(".task-input input").val(), date : $(".task-input input[type=date]").val(), important : $(".task-input input[type=checkbox]").val(), done : false}}};
             console.log(newTask);
             $(".todoList .task-input input[type=text]").val("");
             $(".todoList .task-input input[type=date]").val("");

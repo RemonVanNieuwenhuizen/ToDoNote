@@ -95,8 +95,7 @@ app.post("/todos", function (req, res) {
 	// the object is now stored in req.body
 
 	var newTask = req.body;
-
-	toDos.lists.push(newTask);
+	toDos['lists'][Object.keys(newTask)]['items'].push(newTask[Object.keys(newTask)]);
 
 	// send back a simple object
 
