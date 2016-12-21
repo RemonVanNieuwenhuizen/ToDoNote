@@ -16,11 +16,10 @@ var main = function () {
 
             var currentTodo = json[currentListIndex]['items'][todo];
             var today = new Date();
-            today = Date.parse(today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate());
+            today = today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate();
             console.log(today);
             var due = Date.parse(currentTodo.date);
             console.log(currentTodo.date);
-            if(currentTodo.date > today ){
             var listItem = $("<li class=" + todo + ">").text(currentTodo.todoTitle + " ").append($("<input type=date>").val(currentTodo.date)).append($("<input type=checkbox>").prop('checked', currentTodo.important === "true"));
             
             if (currentTodo.done === "false") {
