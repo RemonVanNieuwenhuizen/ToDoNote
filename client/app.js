@@ -25,16 +25,16 @@ var main = function () {
             
             
             if (today<due){
-                listItem = $("<li class=" + todo + ">").text(currentTodo.todoTitle + " ").append($("<input type=date>").val(currentTodo.date)).append($("<input type=checkbox>").prop('checked', currentTodo.important === "true"));
+                listItem = $("<li class=" + todo + ">").text(currentTodo.todoTitle + " ").append($("<input type=date>").val(currentTodo.date)).append($("<input type=checkbox>").prop('checked', currentTodo.important === "true").append($("<input type=submit value=update>")));
             }
             else if(today>due) {
-                listItem = $("<li class = " + todo + " class = due>").text(currentTodo.todoTitle + " ").append($("<input type=date>").val(currentTodo.date)).append($("<input type=checkbox>").prop('checked', currentTodo.important === "true"));
+                listItem = $("<li class = " + todo + " class = due>").text(currentTodo.todoTitle + " ").append($("<input type=date>").val(currentTodo.date)).append($("<input type=checkbox>").prop('checked', currentTodo.important === "true")).append($("<input type=submit value=update>"));
             };
                 
                 
                 
             if (currentTodo.done === "false") {
-            $(".container .todoList .tasks ul").prepend(listItem.append($("<input type="submit" value="update">")));
+            $(".container .todoList .tasks ul").prepend(listItem.);
             } else if (currentTodo.done === "true") {
             $(".container .todoList .done  ul").prepend(listItem);
             }
