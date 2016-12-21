@@ -33,7 +33,7 @@ animation-duration: 4s;
 animation-iteration-count: infinite;}
 
 @keyframes example {
-    0%   {color: green;}
+    0%   {color: black;}
     25%  {color: yellow;}
     50%  {color: blue;}
     100% {color: red;}
