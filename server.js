@@ -78,6 +78,7 @@ app.post("/removeList", function (req, res) {
 });
 
 app.post("/removeTask", function (req, res) {
+    
     var removeTask = req.body;
     var currentListIndex = Object.keys(removeTask)[0];
     var currentTodoIndex = Object.keys(removeTask[currentListIndex])[0];

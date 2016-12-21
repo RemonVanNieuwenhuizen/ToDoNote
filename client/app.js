@@ -101,7 +101,7 @@ var lists = function () {
             $.post("removeLists", clickedList , function (result) {
                 console.log("We posted and the server responded!");
                 console.log(result);
-                lists.push(clickedList);
+                removelists.push(clickedList);
             });
         }
         //If no is pressed reload list title and remove conformation question
@@ -138,7 +138,7 @@ var tasks = function () {
             $.post("todos", newTask, function (result) {
                 console.log("We posted and the server responded!");
                 console.log(result);
-                lists.push(newTask);
+                todos.push(newTask);
             });
         }
     };
@@ -166,7 +166,7 @@ var tasks = function () {
         $.post("removeTask", clickedTask , function (result) {
                 console.log("We removed the item from the list");
                 console.log(result);
-                lists.push(clickedList);
+                removeTask.push(clickedTask);
             });
     });
     
