@@ -15,11 +15,18 @@ var main = function () {
         Object.keys(json[currentListIndex]['items']).forEach(function (todo) {
 
             var currentTodo = json[currentListIndex]['items'][todo];
+            var today = Date.parse(currentDate.getFullYear() + "-" + (currentDate.getMonth() + 1) + "-" + currentDate.getDate());
+            console.log(today);
+            var due = Date.parse(currentTodo.date);
+            console.log(currentTodo.date);
+            if(currentTodo.date > today ){
+            var listItem = $("<li class=" + todo + ">").text(currentTodo.todoTitle + " ").append($("<input type=date>").val(currentTodo.date)).append($("<input type=checkbox>").prop('checked', currentTodo.important === "true"));
+            
             if (currentTodo.done === "false") {
-            $(".container .todoList .tasks ul").prepend($("<li class=" + todo + ">").text(currentTodo.todoTitle + " ").append($("<input type=date>").val(currentTodo.date)).append($("<input type=checkbox>").prop('checked', currentTodo.important === "true")));
+            $(".container .todoList .tasks ul").prepend(listItem);
             } else if (currentTodo.done === "true") {
-            $(".container .todoList .done  ul").prepend($("<li class=" + todo + ">").text(currentTodo.todoTitle).append($('<button id= "removeItem" type="button">Remove</button>')));
-        } } );
+            $(".container .todoList .done  ul").prepend(listItem);
+        } } } );
     });
 };
 $(document).ready(main);
@@ -104,8 +111,6 @@ var tasks = function () {
             $(".tasks ul").append($new_task);
             $new_task.fadeIn();
             newTask = {[currentListIndex] : {[randomIndex] : {todoTitle : $(".task-input input").val(), date : $(".task-input input[type=date]").val(), important : $(".task-input input[type=checkbox]").val(), done : false}}};
-            console.log(newTask);
-            console.log(Object.keys(newTask));
             $(".todoList .task-input input[type=text]").val("");
             $(".todoList .task-input input[type=date]").val("");
             $(".todoList .task-input input[type=checkbox]").prop("checked", false);
