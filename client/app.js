@@ -15,7 +15,8 @@ var main = function () {
         Object.keys(json[currentListIndex]['items']).forEach(function (todo) {
 
             var currentTodo = json[currentListIndex]['items'][todo];
-            var today = Date.parse(currentDate.getFullYear() + "-" + (currentDate.getMonth() + 1) + "-" + currentDate.getDate());
+            var today = new Date();
+            today = Date.parse(today.getFullYear() + "-" + (today.getMonth() + 1) + "-" + today.getDate());
             console.log(today);
             var due = Date.parse(currentTodo.date);
             console.log(currentTodo.date);
