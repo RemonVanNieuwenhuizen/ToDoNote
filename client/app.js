@@ -1,6 +1,6 @@
 var todos;
 var lists;
-var currentListIndex = 1;
+var currentListIndex = '1';
 var main = function () {
     "use strict";
     
@@ -96,14 +96,14 @@ var tasks = function () {
         
         if ($(".todoList input[type=text]").val() !== "") {
             
-            var randomIndex = Math.random();
+            var randomIndex = Math.round(10000000000 * Math.random());
             $new_task = $("<li class ="+ randomIndex + ">").text($(".task-input input[type=text]").val() + " ");
             $new_task.append($("<input type=date>").val($(".task-input input[type=date]").val()));
             $(".task-input input[type=checkbox]").clone().appendTo($new_task);
             $new_task.hide();
             $(".tasks ul").append($new_task);
             $new_task.fadeIn();
-            newTask = {currentListIndex : {randomIndex : {todoTitle : $(".task-input input").val(), date : $(".task-input input[type=date]").val(), important : $(".task-input input[type=checkbox]").val(), done : false}}};
+            newTask = {[currentListIndex] : {[randomIndex] : {todoTitle : $(".task-input input").val(), date : $(".task-input input[type=date]").val(), important : $(".task-input input[type=checkbox]").val(), done : false}}};
             console.log(newTask);
             $(".todoList .task-input input[type=text]").val("");
             $(".todoList .task-input input[type=date]").val("");
@@ -160,7 +160,6 @@ var tasks = function () {
 };
 
 $(document).ready(tasks);
-
 
 
 
