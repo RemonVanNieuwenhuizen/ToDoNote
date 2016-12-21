@@ -16,7 +16,7 @@ var main = function () {
 
             var currentTodo = json[currentListIndex]['items'][todo];
             if (currentTodo.done === "false") {
-            $(".container .todoList .tasks ul").prepend($("<li class=" + todo + ">").text(currentTodo.todoTitle + " ").append($("<input type=date>").val(currentTodo.date)).append($("input[type=checkbox]").prop('checked', currentTodo.important === "true")));
+            $(".container .todoList .tasks ul").prepend($("<li class=" + todo + ">").text(currentTodo.todoTitle + " ").append($("<input type=date>").val(currentTodo.date)).append($("<input type=checkbox>").prop('checked', currentTodo.important === "true")));
             } else if (currentTodo.done === "true") {
             $(".container .todoList .done  ul").prepend($("<li class=" + todo + ">").text(currentTodo.todoTitle).append($('<button id= "removeItem" type="button">Remove</button>')));
         } } );
