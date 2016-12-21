@@ -158,7 +158,7 @@ var tasks = function () {
     //remove item from done
     $(".done ul").on("click", "button", function (event) {
         event.stopPropagation();
-        var clickedTask = {listId : currentListIndex, taskId : $(this).parent().attr("class")};
+        var clickedTask = {[currentListIndex] : {[$(this).parent().attr("class")] : {id : [$(this).parent().attr("class")]}}};
         console.log(clickedTask);
         console.log("remove button pressed");
         $(this).parent().remove();
