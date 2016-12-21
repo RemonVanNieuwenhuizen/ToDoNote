@@ -7,6 +7,7 @@ var main = function () {
     
     
     $.getJSON("/json/todos.json", function (json) {
+        console.log(json);
         this.todos = json.todos;
         console.log(todos);
         
