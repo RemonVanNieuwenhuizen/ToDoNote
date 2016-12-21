@@ -19,13 +19,13 @@ var bodyParser = require('body-parser'),
             1: {
                 title: "Movies to watch",
                 items: {
-                    1: {"todoTitle" : "The Hobbit 3",          "date" : null, "important" : null, "done" : "false"},
-                    2: {"todoTitle" : "The Other Woman",       "date" : null, "important" : null, "done" : "false"},
-                    3: {"todoTitle" : "Transcendence",         "date" : null, "important" : null, "done" : "false"},
+                    1: {"todoTitle" : "The Hobbit 3",          "date" : null, "important" : "true", "done" : "false"},
+                    2: {"todoTitle" : "The Other Woman",       "date" : null, "important" : "false", "done" : "false"},
+                    3: {"todoTitle" : "Transcendence",         "date" : null, "important" : "true", "done" : "false"},
                     4: {"todoTitle" : "Noah",                  "date" : null, "important" : null, "done" : "false"},
                     5: {"todoTitle" : "12 Years a Slave",      "date" : null, "important" : null, "done" : "false"},
-                    6: {"todoTitle" : "Harry potter",          "date" : null, "important" : null, "done" : "true"},
-                    7: {"todoTitle" : "Star wars",             "date" : null, "important" : null, "done" : "true"},
+                    6: {"todoTitle" : "Harry potter",          "date" : null, "important" : "false", "done" : "true"},
+                    7: {"todoTitle" : "Star wars",             "date" : null, "important" : "true", "done" : "true"},
                     8: {"todoTitle" : "Ted",                   "date" : null, "important" : null, "done" : "true"},
                 }
             },
