@@ -8,10 +8,11 @@ var main = function () {
     
     $.getJSON("/json/todos.json", function (json) {
         console.log(json);
+        lists = json;
         
-        json.keys(lists).forEach(function(list) {
+        Object.keys(lists).forEach(function (list) {
             $(".container .lists ul").append($("<li>").text(list.title).append($('<button type="button">X</button>')));
-            list.keys(items).forEach(function(todo) {
+            Object.keys(lists[currentListIndex]['items']).forEach(function(todo) {
                 if (todo.done === "false") {
                 $(".container .todoList .tasks ul").prepend($("<li>").text(todo.todoTitle));
                 } else if (todo.done === "true") {
