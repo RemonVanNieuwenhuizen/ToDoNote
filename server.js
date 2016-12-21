@@ -72,6 +72,16 @@ app.post("/todos", function (req, res) {
 
 });
 
+app.post("/removeList", function (req, res) {
+    var removeList = req.body;
+    delete toDos['lists'][removeList];
+});
+
+app.post("/removeTask", function (req, res) {
+    var removeTask = req.body;
+    delete toDos['lists'][removeTask[0]]['items'][removeTask[1]];
+});
+
 // tell Express to parse incoming
 
 // JSON objects

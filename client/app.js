@@ -25,16 +25,16 @@ var main = function () {
             
             
             if (today<due){
-                listItem = $("<li class=" + todo + ">").text(currentTodo.todoTitle + " ").append($("<input type=date>").val(currentTodo.date)).append($("<input type=checkbox>").prop('checked', currentTodo.important === "true")).append($("<input type=submit value=update>"));
+                listItem = $("<li class=" + todo + ">").text(currentTodo.todoTitle + " ").append($("<input type=date>").val(currentTodo.date)).append($("<input type=checkbox>").prop('checked', currentTodo.important === "true"));
             }
             else if(today>due) {
-                listItem = $("<li class = " + todo + " class = due>").text(currentTodo.todoTitle + " ").append($("<input type=date>").val(currentTodo.date)).append($("<input type=checkbox>").prop('checked', currentTodo.important === "true")).append($("<input type=submit value=update>"));
+                listItem = $("<li class = " + todo + " id = due>").text(currentTodo.todoTitle + " ").append($("<input type=date>").val(currentTodo.date)).append($("<input type=checkbox>").prop('checked', currentTodo.important === "true"));
             };
                 
                 
                 
             if (currentTodo.done === "false") {
-            $(".container .todoList .tasks ul").prepend(listItem);
+            $(".container .todoList .tasks ul").prepend(listItem.append($("<input type=submit value=update>")));
             } else if (currentTodo.done === "true") {
             $(".container .todoList .done  ul").prepend(listItem);
             }
@@ -50,9 +50,10 @@ var lists = function () {
         var newList;
         
         if ($(".list-input input").val() !== "") {
+            var randomIndex = Math.round(10000000000 * Math.random());
             var description = $(".list-input input").val();
             
-            $new_list = $("<li>").text(description).append($('<button type="button">X</button>'));
+            $new_list = $("<li class ="+ randomIndex + ">").text(description).append($('<button type="button">X</button>'));
             newList = {listTitle : description};
             $new_list.hide();
             $(".lists ul").append($new_list);
@@ -82,6 +83,7 @@ var lists = function () {
     //Remove list
     $(".lists ul").on("click", "button", function (event) {
         console.log($(this).html());
+        var clickedList = $(this).parent().attr("class");
         //If the cross is presse ask for conformation
         if ($(this).html() === "X") {
             event.stopPropagation();
@@ -95,6 +97,12 @@ var lists = function () {
             console.log("remove button pressed");
             $(this).parent().remove();
             $("#delete").remove();
+            
+            $.post("removeLists", clickedList , function (result) {
+                console.log("We posted and the server responded!");
+                console.log(result);
+                lists.push(clickedList);
+            });
         }
         //If no is pressed reload list title and remove conformation question
         else if ($(this).html() === "No") {
@@ -150,8 +158,15 @@ var tasks = function () {
     //remove item from done
     $(".done ul").on("click", "button", function (event) {
         event.stopPropagation();
+        var clickedTask = [currentListIndex, $(this).parent().attr("class")];
         console.log("remove button pressed");
         $(this).parent().remove();
+        
+        $.post("removeTask", clickedTask , function (result) {
+                console.log("We removed the item from the list");
+                console.log(result);
+                lists.push(clickedList);
+            });
     });
     
     //moving item from tasks to done
