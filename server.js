@@ -79,7 +79,7 @@ app.post("/removeList", function (req, res) {
 
 app.post("/removeTask", function (req, res) {
     var removeTask = req.body;
-    console.log(removeTask)
+    console.log(removeTask);
     delete toDos['lists'][removeTask[0]]['items'][removeTask[1]];
 });
 
